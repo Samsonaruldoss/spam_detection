@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Message Form</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #cccccc, #ffffff); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 300px;
+        }
+
+        textarea {
+            resize: none;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #aaa;
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #888888;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #666666;
+        }
+
+        p {
+            text-align: center;
+            font-weight: bold;
+            color: #444444;
+        }
+    </style>
+</head>
+<body>
+    <form action="{% url 'data' %}" method="POST">
+        {% csrf_token %}
+        <textarea name="msg" placeholder="Enter the message"></textarea>
+        <button type="submit">Submit</button>
+        {% if type %}
+        <p>{{ type }}</p>
+        {% endif %}
+    </form>
+</body>
+</html>
